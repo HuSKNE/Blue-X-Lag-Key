@@ -14,103 +14,278 @@
 
 html,
 body {
-    width: 100%;
-    height: 100%;
     margin: 0;
-    padding: 0;
-    background: #000;
+    width: 100%;
+    min-height: 100%;
 }
 
 body {
-    background: #000;
-    color: #fff;
-    font-family: "Courier New", Courier, monospace;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    padding: 5px 35px;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(0,255,140,.09), transparent 28%),
+        radial-gradient(circle at 85% 80%, rgba(0,130,255,.08), transparent 30%),
+        #050708;
 
-    overflow: hidden;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+
+    overflow-x: hidden;
 }
 
 
 /* =========================
-   MAIN CONTAINER
+   BACKGROUND
+========================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 49.5%,
+            rgba(255,255,255,.018) 50%,
+            transparent 50.5%
+        ),
+        linear-gradient(
+            transparent 49.5%,
+            rgba(255,255,255,.018) 50%,
+            transparent 50.5%
+        );
+
+    background-size: 70px 70px;
+
+    pointer-events: none;
+}
+
+
+/* =========================
+   WRAPPER
 ========================= */
 
 .container {
     width: 100%;
-    max-width: 620px;
-    text-align: center;
+    max-width: 520px;
+
+    position: relative;
+    z-index: 2;
 }
 
 
 /* =========================
-   LOGO
+   TOP BAR
 ========================= */
 
-.key-icon {
-    width: 70px;
-    height: 70px;
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    margin: 0 auto 6px;
+    margin-bottom: 16px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.brand-logo {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 12px;
+
+    object-fit: cover;
+
+    border: 1px solid rgba(0,255,145,.35);
+
+    box-shadow:
+        0 0 18px rgba(0,255,145,.12);
+}
+
+.brand-name {
+    font-size: 13px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+.brand-sub {
+    margin-top: 3px;
+
+    color: #63736b;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+.online {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 7px 10px;
+
+    border-radius: 20px;
+
+    color: #62e7a5;
+
+    background: rgba(0,255,145,.055);
+
+    border: 1px solid rgba(0,255,145,.15);
+
+    font-size: 8px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.online-dot {
+    width: 6px;
+    height: 6px;
 
     border-radius: 50%;
 
-    overflow: hidden;
+    background: #00ff91;
 
-    border: 3px solid #00ff88;
-
-    background: #050505;
-
-    box-shadow:
-        0 0 12px rgba(0,255,136,.45),
-        0 0 25px rgba(0,255,136,.10);
-}
-
-.key-icon img {
-    width: 100%;
-    height: 100%;
-
-    display: block;
-
-    object-fit: cover;
+    box-shadow: 0 0 9px #00ff91;
 }
 
 
 /* =========================
-   TITLE
+   HERO
 ========================= */
 
-h1 {
-    margin: 0 0 2px;
+.hero {
+    padding: 25px 20px 21px;
 
-    color: #00ff88;
+    text-align: center;
 
-    font-size: 25px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.035),
+            rgba(255,255,255,.008)
+        );
 
-    line-height: 1;
+    border: 1px solid rgba(255,255,255,.07);
 
-    font-weight: bold;
+    border-radius: 25px 25px 0 0;
 
-    letter-spacing: 4px;
-
-    text-shadow:
-        0 0 8px rgba(0,255,136,.5);
+    border-bottom: none;
 }
 
-.subtitle {
-    margin: 0 0 10px;
+.hero-badge {
+    display: inline-block;
 
-    color: #316b4e;
+    margin-bottom: 12px;
 
-    font-size: 11px;
+    padding: 5px 9px;
 
-    letter-spacing: 3px;
+    border-radius: 6px;
+
+    color: #00ff91;
+
+    background: rgba(0,255,145,.055);
+
+    border: 1px solid rgba(0,255,145,.14);
+
+    font-size: 8px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    margin: 0;
+
+    font-size: 32px;
+
+    font-weight: 900;
+
+    letter-spacing: 6px;
+
+    line-height: 1;
+}
+
+.hero h1 span {
+    color: #00ff91;
+
+    text-shadow:
+        0 0 16px rgba(0,255,145,.25);
+}
+
+.hero p {
+    margin: 11px 0 0;
+
+    color: #6f7e76;
+
+    font-size: 10px;
+
+    letter-spacing: 2.5px;
+}
+
+
+/* =========================
+   MAIN PANEL
+========================= */
+
+.panel {
+    padding: 20px;
+
+    background:
+        linear-gradient(
+            155deg,
+            #0b1010,
+            #070b0c
+        );
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 0 0 25px 25px;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.65);
+}
+
+
+/* =========================
+   STEP HEADER
+========================= */
+
+.step-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+}
+
+.step-title {
+    color: #dce5e0;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.step-number {
+    color: #68766f;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
 }
 
 
@@ -118,124 +293,86 @@ h1 {
    PROGRESS
 ========================= */
 
-.progress-container {
+.progress-box {
+    padding: 12px;
+
+    margin-bottom: 16px;
+
+    background: rgba(0,0,0,.20);
+
+    border: 1px solid rgba(255,255,255,.055);
+
+    border-radius: 12px;
+}
+
+.progress-top {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+}
+
+.progress-label {
+    color: #65736c;
+
+    font-size: 8px;
+
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+}
+
+.progress-value {
+    color: #00ff91;
+
+    font-size: 9px;
+
+    font-weight: 900;
+}
+
+.progress {
     width: 100%;
+    height: 5px;
 
-    display: flex;
+    background: #151c19;
 
-    align-items: center;
+    border-radius: 10px;
 
-    margin-bottom: 10px;
+    overflow: hidden;
 }
 
-.step-indicator {
-    display: flex;
+.progress span {
+    display: block;
 
-    align-items: center;
+    width: 100%;
+    height: 100%;
 
-    gap: 8px;
+    background:
+        linear-gradient(
+            90deg,
+            #00c96f,
+            #00ff91
+        );
 
-    white-space: nowrap;
-}
-
-.circle {
-    width: 40px;
-    height: 40px;
-
-    min-width: 40px;
-
-    border-radius: 50%;
-
-    border: 3px solid #286b48;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    color: #347b57;
-
-    background: #050805;
-
-    font-size: 15px;
-}
-
-.circle.active {
-    border-color: #00ff88;
-
-    color: #00ff88;
+    border-radius: inherit;
 
     box-shadow:
-        0 0 10px rgba(0,255,136,.35);
-}
-
-.step-text {
-    color: #316b4e;
-
-    font-size: 12px;
-
-    letter-spacing: 1px;
-}
-
-.line {
-    flex: 1;
-
-    height: 3px;
-
-    background: #347d58;
-
-    margin: 0 12px;
+        0 0 12px rgba(0,255,145,.35);
 }
 
 
 /* =========================
-   COMPLETE STEP CARD
+   DESCRIPTION
 ========================= */
 
-.card {
-    width: 100%;
+.description {
+    color: #76847d;
 
-    background: #09150c;
+    font-size: 10px;
 
-    border: 1px solid #276b45;
+    line-height: 1.55;
 
-    border-radius: 22px;
-
-    padding: 18px 22px;
-
-    text-align: left;
-
-    box-shadow:
-        0 8px 30px rgba(0,0,0,.65),
-        0 0 25px rgba(0,255,136,.04);
-}
-
-.card h2 {
-    margin: 0 0 8px;
-
-    color: #00ff88;
-
-    font-size: 18px;
-
-    line-height: 1.15;
-
-    letter-spacing: 1px;
-
-    text-shadow:
-        0 0 7px rgba(0,255,136,.3);
-}
-
-.card-p {
-    margin: 0 0 10px;
-
-    color: #316b4e;
-
-    font-size: 12px;
-
-    line-height: 1.3;
-
-    letter-spacing: .5px;
+    margin: 0 0 15px;
 }
 
 
@@ -244,135 +381,166 @@ h1 {
 ========================= */
 
 .features {
-    list-style: none;
+    display: grid;
 
-    padding: 0;
+    grid-template-columns: 1fr 1fr;
 
-    margin: 0 0 10px;
+    gap: 8px;
+
+    margin-bottom: 15px;
 }
 
-.features li {
+.feature {
+    padding: 11px;
+
+    border-radius: 11px;
+
+    background: rgba(255,255,255,.025);
+
+    border: 1px solid rgba(255,255,255,.06);
+}
+
+.feature-icon {
+    display: inline-flex;
+
+    width: 22px;
+    height: 22px;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 7px;
+
+    border-radius: 7px;
+
+    color: #00ff91;
+
+    background: rgba(0,255,145,.07);
+
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.feature-title {
+    color: #bdc8c2;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: .4px;
+}
+
+.feature-text {
+    margin-top: 3px;
+
+    color: #59665f;
+
+    font-size: 8px;
+}
+
+
+/* =========================
+   SECURITY
+========================= */
+
+.security {
     display: flex;
 
     align-items: center;
 
-    color: #316b4e;
+    gap: 11px;
 
-    font-size: 12px;
+    padding: 12px;
 
-    line-height: 1.2;
+    margin-bottom: 14px;
 
-    margin-bottom: 4px;
+    border-radius: 12px;
 
-    letter-spacing: .5px;
+    background: rgba(255,191,0,.035);
+
+    border: 1px solid rgba(255,191,0,.12);
 }
 
-.features li:last-child {
-    margin-bottom: 0;
-}
+.security-icon {
+    width: 29px;
+    height: 29px;
 
-.features li::before {
-    content: "➜";
-
-    color: #00ff88;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 18px;
-
-    font-weight: bold;
-
-    margin-right: 12px;
-
-    text-shadow:
-        0 0 8px rgba(0,255,136,.45);
-}
-
-
-/* =========================
-   SECURITY NOTICE
-========================= */
-
-.warning {
-    background: #1a1305;
-
-    border: 1px solid #574606;
-
-    border-radius: 13px;
-
-    padding: 10px;
-
-    display: flex;
-
-    gap: 10px;
-
-    margin-bottom: 10px;
-}
-
-.warning-icon {
     flex-shrink: 0;
 
-    font-size: 23px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    line-height: 1;
+    border-radius: 8px;
+
+    background: rgba(255,191,0,.07);
+
+    font-size: 14px;
 }
 
-.warning-title {
-    color: #ffd42a;
+.security-title {
+    color: #e9c95b;
 
-    font-size: 13px;
+    font-size: 9px;
 
-    font-weight: bold;
+    font-weight: 800;
 
-    margin-bottom: 2px;
-
-    letter-spacing: .5px;
+    letter-spacing: .7px;
 }
 
-.warning-text {
-    color: #826d27;
+.security-text {
+    margin-top: 3px;
 
-    font-size: 10px;
+    color: #766b46;
 
-    line-height: 1.3;
+    font-size: 8px;
 
-    letter-spacing: .3px;
+    line-height: 1.35;
 }
 
 
 /* =========================
-   BUTTON
+   CONTINUE BUTTON
 ========================= */
 
 .btn {
     width: 100%;
 
-    padding: 12px;
+    height: 48px;
 
-    background: #00f985;
+    border: 0;
 
-    color: #001b0d;
+    border-radius: 12px;
 
-    border: none;
+    background:
+        linear-gradient(
+            135deg,
+            #00ff91,
+            #00d878
+        );
 
-    border-radius: 13px;
+    color: #00170d;
 
-    font-family: Arial, sans-serif;
+    font-size: 11px;
 
-    font-size: 14px;
+    font-weight: 900;
 
-    font-weight: bold;
+    letter-spacing: 1.2px;
 
     cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(0,255,145,.13);
 
     transition: .2s ease;
 }
 
 .btn:hover {
-    background: #00ff91;
+    transform: translateY(-2px);
 
     box-shadow:
-        0 0 20px rgba(0,255,136,.25);
+        0 12px 30px rgba(0,255,145,.20);
 }
 
 .btn:active {
@@ -381,71 +549,92 @@ h1 {
 
 
 /* =========================
-   YOUTUBE + TELEGRAM
+   SOCIAL
 ========================= */
 
 .social-buttons {
-    display: flex;
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
 
     gap: 8px;
 
-    margin-top: 8px;
+    margin-top: 9px;
 }
 
 .social-btn {
-    flex: 1;
+    height: 42px;
 
-    padding: 9px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    border-radius: 10px;
+    gap: 8px;
 
     text-decoration: none;
 
-    text-align: center;
+    border-radius: 11px;
 
-    font-family: Arial, sans-serif;
+    font-size: 9px;
 
-    font-size: 11px;
+    font-weight: 900;
 
-    font-weight: bold;
-
-    letter-spacing: .5px;
+    letter-spacing: 1px;
 
     transition: .2s ease;
 }
 
 .youtube-btn {
-    color: #ff4b4b;
+    color: #ff6565;
 
-    background: #160707;
+    background: rgba(255,50,50,.045);
 
-    border: 1px solid #5c2020;
+    border: 1px solid rgba(255,70,70,.16);
 }
 
 .youtube-btn:hover {
-    background: #220909;
+    background: rgba(255,50,50,.08);
 
-    box-shadow:
-        0 0 15px rgba(255,40,40,.18);
+    border-color: rgba(255,70,70,.30);
+
+    transform: translateY(-2px);
 }
 
 .telegram-btn {
-    color: #28b9ff;
+    color: #38bfff;
 
-    background: #06131a;
+    background: rgba(0,170,255,.045);
 
-    border: 1px solid #15516d;
+    border: 1px solid rgba(0,180,255,.16);
 }
 
 .telegram-btn:hover {
-    background: #071b25;
+    background: rgba(0,170,255,.08);
 
-    box-shadow:
-        0 0 15px rgba(0,180,255,.18);
+    border-color: rgba(0,180,255,.30);
+
+    transform: translateY(-2px);
 }
 
 .social-btn:active {
     transform: scale(.97);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    text-align: center;
+
+    margin-top: 13px;
+
+    color: #3e4a44;
+
+    font-size: 7px;
+
+    letter-spacing: 1.5px;
 }
 
 
@@ -456,122 +645,22 @@ h1 {
 @media (max-width: 600px) {
 
     body {
-        padding-left: 35px;
-        padding-right: 35px;
+        padding: 14px;
     }
 
-    .container {
-        max-width: 100%;
+    .hero {
+        padding: 21px 15px 18px;
     }
 
-}
-
-
-/* =========================
-   SHORT SCREEN
-========================= */
-
-@media (max-height: 850px) {
-
-    body {
-        padding-top: 3px;
-        padding-bottom: 3px;
+    .hero h1 {
+        font-size: 27px;
+        letter-spacing: 4px;
     }
 
-    .key-icon {
-        width: 60px;
-        height: 60px;
-
-        margin-bottom: 5px;
+    .panel {
+        padding: 17px;
     }
 
-    h1 {
-        font-size: 22px;
-    }
-
-    .subtitle {
-        font-size: 10px;
-
-        margin-bottom: 7px;
-    }
-
-    .progress-container {
-        margin-bottom: 8px;
-    }
-
-    .circle {
-        width: 38px;
-        height: 38px;
-
-        min-width: 38px;
-
-        font-size: 14px;
-    }
-
-    .card {
-        padding: 15px 18px;
-
-        border-radius: 19px;
-    }
-
-    .card h2 {
-        font-size: 17px;
-
-        margin-bottom: 6px;
-    }
-
-    .card-p {
-        font-size: 11px;
-
-        line-height: 1.2;
-
-        margin-bottom: 9px;
-    }
-
-    .features {
-        margin-bottom: 9px;
-    }
-
-    .features li {
-        font-size: 11px;
-
-        margin-bottom: 2px;
-    }
-
-    .features li::before {
-        font-size: 17px;
-
-        margin-right: 10px;
-    }
-
-    .warning {
-        padding: 8px;
-
-        margin-bottom: 9px;
-    }
-
-    .warning-icon {
-        font-size: 20px;
-    }
-
-    .warning-title {
-        font-size: 12px;
-    }
-
-    .warning-text {
-        font-size: 9px;
-    }
-
-    .btn {
-        padding: 10px;
-
-        font-size: 13px;
-    }
-
-    .social-btn {
-        padding: 8px;
-        font-size: 10px;
-    }
 }
 
 
@@ -582,28 +671,36 @@ h1 {
 @media (max-width: 380px) {
 
     body {
-        padding-left: 20px;
-        padding-right: 20px;
+        padding: 10px;
     }
 
-    .card {
-        padding-left: 18px;
-        padding-right: 18px;
+    .brand-name {
+        font-size: 11px;
     }
 
-    h1 {
-        font-size: 21px;
+    .online {
+        padding: 6px 8px;
+        font-size: 7px;
+    }
 
+    .hero h1 {
+        font-size: 23px;
         letter-spacing: 3px;
     }
 
-    .step-text {
-        font-size: 10px;
+    .features {
+        grid-template-columns: 1fr;
     }
 
-    .line {
-        margin: 0 7px;
+    .panel {
+        padding: 14px;
     }
+
+    .social-btn {
+        height: 39px;
+        font-size: 8px;
+    }
+
 }
 
 </style>
@@ -615,115 +712,177 @@ h1 {
 <div class="container">
 
 
-    <!-- LOGO -->
+    <!-- TOP BAR -->
 
-    <div class="key-icon">
+    <div class="topbar">
 
-        <img
-            src="./assets/logo.png"
-            alt="BLUE X LAG">
+        <div class="brand">
 
-    </div>
+            <img
+                class="brand-logo"
+                src="./assets/logo.png"
+                alt="BLUE X LAG">
 
+            <div>
 
-    <!-- NAME -->
+                <div class="brand-name">
+                    BLUE X LAG
+                </div>
 
-    <h1>
-        BLUE X LAG
-    </h1>
+                <div class="brand-sub">
+                    KEY GENERATION SYSTEM
+                </div>
 
-
-    <p class="subtitle">
-        GET YOUR KEY
-    </p>
-
-
-    <!-- STEP PROGRESS -->
-
-    <div class="progress-container">
-
-        <div class="step-indicator">
-
-            <div class="circle active">
-                1
             </div>
 
-            <span class="step-text">
-                STEP 1 OF 1
-            </span>
-
         </div>
 
 
-        <div class="line"></div>
+        <div class="online">
 
+            <span class="online-dot"></span>
 
-        <div class="circle">
-            ✓
+            ONLINE
+
         </div>
 
     </div>
 
 
-    <!-- COMPLETE STEP -->
+    <!-- HERO -->
 
-    <div class="card">
+    <div class="hero">
+
+        <div class="hero-badge">
+            SECURE ACCESS • DEVICE KEY
+        </div>
+
+        <h1>
+            <span>BLUE X</span> LAG
+        </h1>
+
+        <p>
+            COMPLETE VERIFICATION TO GET YOUR ACCESS KEY
+        </p>
+
+    </div>
 
 
-        <h2>
-            Complete Step 1
-        </h2>
+    <!-- MAIN PANEL -->
+
+    <div class="panel">
 
 
-        <p class="card-p">
-            Click the button below to continue.
-            Your key will be valid for 24 hours and
-            locked to your device.
+        <div class="step-header">
+
+            <div class="step-title">
+                Verification Required
+            </div>
+
+            <div class="step-number">
+                STEP 1 / 1
+            </div>
+
+        </div>
+
+
+        <!-- PROGRESS -->
+
+        <div class="progress-box">
+
+            <div class="progress-top">
+
+                <div class="progress-label">
+                    VERIFICATION PROGRESS
+                </div>
+
+                <div class="progress-value">
+                    100%
+                </div>
+
+            </div>
+
+            <div class="progress">
+                <span></span>
+            </div>
+
+        </div>
+
+
+        <p class="description">
+            Complete the following step to continue and
+            receive your access key. Your generated key
+            will be secured to this device.
         </p>
 
 
         <!-- FEATURES -->
 
-        <ul class="features">
+        <div class="features">
 
-            <li>
-                Valid for 24 hours
-            </li>
+            <div class="feature">
 
-            <li>
-                1 verification step
-            </li>
+                <div class="feature-icon">
+                    ✓
+                </div>
 
-            <li>
-                Device-locked key
-            </li>
+                <div class="feature-title">
+                    24 HOUR ACCESS
+                </div>
 
-            <li>
-                Auto-saved in app
-            </li>
+                <div class="feature-text">
+                    Key validity
+                </div>
 
-        </ul>
-
-
-        <!-- SECURITY -->
-
-        <div class="warning">
-
-            <div class="warning-icon">
-                ⚠️
             </div>
 
 
-            <div>
+            <div class="feature">
 
-                <div class="warning-title">
-                    Security Notice
+                <div class="feature-icon">
+                    01
                 </div>
 
+                <div class="feature-title">
+                    ONE STEP
+                </div>
 
-                <div class="warning-text">
-                    The use of bots or automation
-                    will result in your key being banned.
+                <div class="feature-text">
+                    Quick verification
+                </div>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    ⌁
+                </div>
+
+                <div class="feature-title">
+                    DEVICE LOCKED
+                </div>
+
+                <div class="feature-text">
+                    Protected access
+                </div>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    ✓
+                </div>
+
+                <div class="feature-title">
+                    AUTO SAVED
+                </div>
+
+                <div class="feature-text">
+                    Saved in app
                 </div>
 
             </div>
@@ -731,13 +890,37 @@ h1 {
         </div>
 
 
-        <!-- BUTTON -->
+        <!-- SECURITY -->
+
+        <div class="security">
+
+            <div class="security-icon">
+                ⚠
+            </div>
+
+            <div>
+
+                <div class="security-title">
+                    SECURITY NOTICE
+                </div>
+
+                <div class="security-text">
+                    The use of bots or automation will result
+                    in your key being banned.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ORIGINAL CONTINUE -->
 
         <button
             class="btn"
             onclick="location.href='https://vplinks.in/WzZ8pc'">
 
-            CONTINUE TO STEP →
+            CONTINUE TO VERIFICATION&nbsp; →
 
         </button>
 
@@ -752,7 +935,7 @@ h1 {
                 target="_blank"
                 rel="noopener noreferrer">
 
-                ▶ YOUTUBE
+                ▶&nbsp; YOUTUBE
 
             </a>
 
@@ -763,7 +946,7 @@ h1 {
                 target="_blank"
                 rel="noopener noreferrer">
 
-                ✈ TELEGRAM
+                ✈&nbsp; TELEGRAM
 
             </a>
 
@@ -771,6 +954,12 @@ h1 {
 
 
     </div>
+
+
+    <div class="footer">
+        BLUE X LAG • SECURE KEY SYSTEM
+    </div>
+
 
 </div>
 
