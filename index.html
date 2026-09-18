@@ -4,248 +4,950 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Key Generated | Faraz Playz Lag</title>
+
     <style>
-        :root { --bg: #000000; --card: #121212; --text: #ffffff; --accent: #00ff88; --error: #ff4444; }
-        
-        body { 
-            background-color: var(--bg); 
-            color: var(--text); 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
-            margin: 0; 
-            padding: 20px;
+        :root {
+            --bg: #020607;
+            --card: #071013;
+            --card2: #0a171a;
+            --text: #ffffff;
+            --accent: #00ff88;
+            --accent2: #00bfff;
+            --error: #ff4444;
+            --muted: #718387;
+        }
+
+        * {
             box-sizing: border-box;
         }
 
-        .container { 
-            width: 100%; 
-            max-width: 400px; 
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+            margin: 0;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at 10% 10%, rgba(0,255,136,.11), transparent 30%),
+                radial-gradient(circle at 90% 85%, rgba(0,150,255,.12), transparent 32%),
+                #020607;
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 25px 16px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* ================= BACKGROUND GRID ================= */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: .16;
+            background-image:
+                linear-gradient(rgba(0,255,136,.055) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,255,136,.055) 1px, transparent 1px);
+            background-size: 44px 44px;
+            mask-image: linear-gradient(
+                to bottom,
+                transparent,
+                black 18%,
+                black 82%,
+                transparent
+            );
+            z-index: 0;
+        }
+
+        /* ================= SNOWFALL ================= */
+
+        .snowfall {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -20px;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #ffffff;
+            opacity: .75;
+            box-shadow: 0 0 8px rgba(255,255,255,.9);
+            animation: snowFall linear infinite;
+        }
+
+        .snowflake:nth-child(1) {
+            left: 3%;
+            animation-duration: 9s;
+            animation-delay: -2s;
+        }
+
+        .snowflake:nth-child(2) {
+            left: 10%;
+            animation-duration: 13s;
+            animation-delay: -8s;
+        }
+
+        .snowflake:nth-child(3) {
+            left: 17%;
+            animation-duration: 11s;
+            animation-delay: -4s;
+        }
+
+        .snowflake:nth-child(4) {
+            left: 24%;
+            animation-duration: 15s;
+            animation-delay: -10s;
+        }
+
+        .snowflake:nth-child(5) {
+            left: 31%;
+            animation-duration: 10s;
+            animation-delay: -5s;
+        }
+
+        .snowflake:nth-child(6) {
+            left: 38%;
+            animation-duration: 14s;
+            animation-delay: -9s;
+        }
+
+        .snowflake:nth-child(7) {
+            left: 45%;
+            animation-duration: 12s;
+            animation-delay: -3s;
+        }
+
+        .snowflake:nth-child(8) {
+            left: 52%;
+            animation-duration: 16s;
+            animation-delay: -11s;
+        }
+
+        .snowflake:nth-child(9) {
+            left: 59%;
+            animation-duration: 10s;
+            animation-delay: -6s;
+        }
+
+        .snowflake:nth-child(10) {
+            left: 66%;
+            animation-duration: 13s;
+            animation-delay: -2s;
+        }
+
+        .snowflake:nth-child(11) {
+            left: 73%;
+            animation-duration: 15s;
+            animation-delay: -8s;
+        }
+
+        .snowflake:nth-child(12) {
+            left: 80%;
+            animation-duration: 11s;
+            animation-delay: -5s;
+        }
+
+        .snowflake:nth-child(13) {
+            left: 87%;
+            animation-duration: 14s;
+            animation-delay: -10s;
+        }
+
+        .snowflake:nth-child(14) {
+            left: 94%;
+            animation-duration: 9s;
+            animation-delay: -4s;
+        }
+
+        .snowflake:nth-child(15) {
+            left: 55%;
+            width: 2px;
+            height: 2px;
+            animation-duration: 8s;
+            animation-delay: -1s;
+        }
+
+        .snowflake:nth-child(16) {
+            left: 20%;
+            width: 3px;
+            height: 3px;
+            animation-duration: 17s;
+            animation-delay: -12s;
+        }
+
+        @keyframes snowFall {
+            0% {
+                transform: translate3d(0, -30px, 0);
+            }
+
+            50% {
+                transform: translate3d(35px, 55vh, 0);
+            }
+
+            100% {
+                transform: translate3d(-25px, 110vh, 0);
+            }
+        }
+
+        /* ================= BACKGROUND LIGHTS ================= */
+
+        .light {
+            position: fixed;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(85px);
+            opacity: .08;
+            z-index: 0;
+        }
+
+        .light.one {
+            background: #00ff88;
+            left: -100px;
+            top: 12%;
+            animation: lightMove 7s ease-in-out infinite;
+        }
+
+        .light.two {
+            background: #008cff;
+            right: -100px;
+            bottom: 10%;
+            animation: lightMove 9s ease-in-out infinite reverse;
+        }
+
+        @keyframes lightMove {
+            50% {
+                transform: translateY(-35px) translateX(25px);
+            }
+        }
+
+        /* ================= MAIN ================= */
+
+        .container {
+            width: 100%;
+            max-width: 440px;
             text-align: center;
-            margin-top: 50px;
+            position: relative;
+            z-index: 5;
         }
 
-        /* --- UI Visibility Controls --- */
-        #mainContainer { display: none; }
-        #bypassContainer { display: none; }
+        /* ================= VISIBILITY ================= */
 
-        /* --- BYPASS ERROR CARD --- */
-        .error-card { 
-            background: #1a0a0a; 
-            border: 1px solid #441111; 
-            border-radius: 28px; 
-            padding: 40px 30px; 
-            box-shadow: 0 10px 40px rgba(255,0,0,0.1);
+        #mainContainer {
+            display: none;
         }
-        .error-icon { font-size: 50px; margin-bottom: 20px; }
-        .error-title { color: var(--error); font-size: 24px; font-weight: bold; margin-bottom: 15px; }
 
-        .key-icon { 
-            background: #1a1a1a; 
-            width: 85px; 
-            height: 85px; 
-            border-radius: 50%; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            margin: -45px auto 15px; 
-            border: 1px solid #333; 
-            overflow: hidden; 
-            box-shadow: 0 0 25px rgba(0, 255, 136, 0.1);
+        #bypassContainer {
+            display: none;
+        }
+
+        /* ================= KEY ICON ================= */
+
+        .key-icon {
+            width: 92px;
+            height: 92px;
+            border-radius: 50%;
+            padding: 3px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px;
+            background: linear-gradient(
+                135deg,
+                #00ff88,
+                #00aaff,
+                #00ff88
+            );
+            background-size: 200% 200%;
+            box-shadow:
+                0 0 20px rgba(0,255,136,.28),
+                0 0 55px rgba(0,160,255,.10);
+            animation:
+                logoFloat 4s ease-in-out infinite,
+                borderFlow 5s linear infinite;
+            overflow: hidden;
             position: relative;
             z-index: 10;
+        }
+
+        .key-icon::after {
+            content: "";
+            position: absolute;
+            inset: 4px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,.15);
+            pointer-events: none;
         }
 
         .key-icon img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border-radius: 50%;
+            display: block;
+            background: #030708;
         }
 
-        @media (min-width: 768px) {
-            .container { max-width: 450px; }
-            .key-icon { width: 110px; height: 110px; margin: -55px auto 20px; }
+        @keyframes logoFloat {
+            50% {
+                transform: translateY(-5px);
+            }
         }
 
-        h1 { font-size: 28px; font-weight: bold; margin-bottom: 8px; }
-        .subtitle { color: #888; font-size: 14px; margin-bottom: 30px; }
+        @keyframes borderFlow {
+            0% {
+                background-position: 0% 50%;
+            }
 
-        .card { 
-            background: var(--card); 
-            border: 1px solid #222; 
-            border-radius: 28px; 
-            padding: 40px 30px 30px; 
-            text-align: center; 
-            box-shadow: 0 15px 50px rgba(0,0,0,0.6); 
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* ================= HEADING ================= */
+
+        h1 {
+            font-size: 28px;
+            font-weight: 900;
+            margin: 0 0 7px;
+            letter-spacing: 2px;
+            background: linear-gradient(
+                90deg,
+                #00ff88,
+                #ffffff,
+                #00bfff,
+                #00ff88
+            );
+            background-size: 250% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: titleFlow 5s linear infinite;
+        }
+
+        @keyframes titleFlow {
+            to {
+                background-position: 250% center;
+            }
+        }
+
+        .subtitle {
+            color: #728488;
+            font-size: 11px;
+            letter-spacing: 2px;
+            margin: 0 0 25px;
+        }
+
+        /* ================= SUCCESS CARD ================= */
+
+        .card {
             position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(10,24,27,.98),
+                    rgba(3,11,14,.98)
+                );
+            border: 1px solid rgba(0,255,136,.17);
+            border-radius: 25px;
+            padding: 29px 24px 24px;
+            text-align: center;
+            box-shadow:
+                0 25px 70px rgba(0,0,0,.70),
+                inset 0 1px 0 rgba(255,255,255,.04);
         }
 
-        h2 { font-size: 22px; margin-bottom: 12px; color: var(--accent); font-weight: 700; }
-        .card-p { color: #999; font-size: 14px; line-height: 1.6; margin-bottom: 25px; }
-
-        .key-box { 
-            background: #000; 
-            padding: 22px; 
-            border-radius: 18px; 
-            border: 1px dashed var(--accent); 
-            margin-bottom: 25px; 
-            position: relative; 
-            overflow: hidden; 
-        }
-        
-        #finalKey { 
-            color: var(--accent); 
-            font-family: 'Courier New', monospace; 
-            font-size: 19px; 
-            font-weight: bold; 
-            letter-spacing: 1px; 
-        }
-        
-        .btn { 
-            width: 100%; 
-            padding: 18px; 
-            background: #ffffff; 
-            color: #000; 
-            border: none; 
-            border-radius: 16px; 
-            font-size: 16px; 
-            font-weight: 800; 
-            cursor: pointer; 
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        .card::before {
+            content: "";
+            position: absolute;
+            width: 190px;
+            height: 190px;
+            right: -100px;
+            top: -100px;
+            border-radius: 50%;
+            background: #00ff88;
+            filter: blur(80px);
+            opacity: .08;
+            pointer-events: none;
         }
 
-        .btn:hover { 
-            transform: scale(1.03); 
-            background: var(--accent); 
-            box-shadow: 0 10px 20px rgba(0,255,136,0.2);
+        .card::after {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            left: -100px;
+            bottom: -100px;
+            border-radius: 50%;
+            background: #008cff;
+            filter: blur(75px);
+            opacity: .08;
+            pointer-events: none;
         }
 
-        .btn-red { background: var(--error); color: white; margin-top: 20px; }
+        h2 {
+            position: relative;
+            z-index: 2;
+            font-size: 20px;
+            margin: 0 0 9px;
+            color: var(--accent);
+            font-weight: 800;
+            letter-spacing: .5px;
+            text-shadow: 0 0 15px rgba(0,255,136,.18);
+        }
 
-        .footer { 
-            margin-top: 80px; 
-            color: #333; 
-            font-size: 10px; 
-            letter-spacing: 2px; 
-            text-transform: uppercase; 
-            font-weight: bold; 
+        .card-p {
+            position: relative;
+            z-index: 2;
+            color: #819094;
+            font-size: 12px;
+            line-height: 1.6;
+            margin: 0 0 21px;
+        }
+
+        /* ================= KEY BOX ================= */
+
+        .key-box {
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(0,255,136,.035),
+                    rgba(0,160,255,.035)
+                ),
+                #020506;
+            padding: 20px 13px;
+            border-radius: 16px;
+            border: 1px dashed rgba(0,255,136,.45);
+            margin-bottom: 18px;
+            box-shadow:
+                inset 0 0 25px rgba(0,255,136,.035),
+                0 0 20px rgba(0,255,136,.04);
+        }
+
+        .key-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 70%;
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                #00ff88,
+                transparent
+            );
+            animation: scanLine 3s linear infinite;
+        }
+
+        .key-box::after {
+            content: "SECURE KEY";
+            position: absolute;
+            right: 10px;
+            top: 7px;
+            color: #24453c;
+            font-size: 7px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        @keyframes scanLine {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 150%;
+            }
+        }
+
+        #finalKey {
+            position: relative;
+            z-index: 2;
+            color: var(--accent);
+            font-family: "Courier New", monospace;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-shadow: 0 0 12px rgba(0,255,136,.25);
+            word-break: break-all;
+        }
+
+        /* ================= COPY BUTTON ================= */
+
+        .btn {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            padding: 15px;
+            background: linear-gradient(
+                100deg,
+                #00d77e,
+                #00ff9d,
+                #00bfff
+            );
+            background-size: 200% auto;
+            color: #00150d;
+            border: none;
+            border-radius: 13px;
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: .25s ease;
+            box-shadow:
+                0 8px 25px rgba(0,255,136,.13);
+            animation: buttonFlow 4s linear infinite;
+        }
+
+        .btn::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 55%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,255,255,.48),
+                transparent
+            );
+            transform: skewX(-20deg);
+            animation: buttonShine 3.5s infinite;
+        }
+
+        @keyframes buttonShine {
+            0%,
+            55% {
+                left: -100%;
+            }
+
+            75% {
+                left: 140%;
+            }
+
+            100% {
+                left: 140%;
+            }
+        }
+
+        @keyframes buttonFlow {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                0 12px 32px rgba(0,255,136,.25);
+        }
+
+        .btn:active {
+            transform: scale(.98);
+        }
+
+        /* ================= ERROR CARD ================= */
+
+        .error-card {
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(255,40,40,.10),
+                    transparent 55%
+                ),
+                #100708;
+            border: 1px solid rgba(255,68,68,.25);
+            border-radius: 25px;
+            padding: 32px 24px 24px;
+            box-shadow:
+                0 20px 60px rgba(0,0,0,.7),
+                0 0 35px rgba(255,0,0,.06);
+        }
+
+        .error-icon {
+            font-size: 48px;
+            margin-bottom: 13px;
+            filter: drop-shadow(0 0 12px rgba(255,50,50,.25));
+            animation: errorPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes errorPulse {
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .error-title {
+            color: #ff4b4b;
+            font-size: 22px;
+            font-weight: 900;
+            margin-bottom: 11px;
+            letter-spacing: .5px;
+        }
+
+        .btn-red {
+            background: linear-gradient(
+                100deg,
+                #ff3636,
+                #ff5555,
+                #ff2222
+            );
+            color: #fff;
+            margin-top: 18px;
+            animation: none;
+        }
+
+        .btn-red:hover {
+            background: #ff3c3c;
+            box-shadow:
+                0 10px 28px rgba(255,40,40,.20);
+        }
+
+        /* ================= FOOTER ================= */
+
+        .footer {
+            margin-top: 17px;
+            color: #35484c;
+            font-size: 8px;
+            letter-spacing: 1.7px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 500px) {
+
+            body {
+                padding: 20px 14px;
+            }
+
+            .container {
+                max-width: 430px;
+            }
+
+            .key-icon {
+                width: 78px;
+                height: 78px;
+                margin-bottom: 12px;
+            }
+
+            h1 {
+                font-size: 25px;
+                letter-spacing: 2px;
+            }
+
+            .subtitle {
+                font-size: 9px;
+                letter-spacing: 1.7px;
+                margin-bottom: 20px;
+            }
+
+            .card {
+                border-radius: 21px;
+                padding: 24px 17px 18px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            .card-p {
+                font-size: 11px;
+                margin-bottom: 18px;
+            }
+
+            .key-box {
+                padding: 18px 9px;
+            }
+
+            #finalKey {
+                font-size: 16px;
+            }
+
+            .btn {
+                padding: 14px;
+            }
+
+            .error-card {
+                border-radius: 21px;
+                padding: 27px 18px 19px;
+            }
+        }
+
+        @media (max-height: 700px) {
+
+            body {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
+            .key-icon {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 8px;
+            }
+
+            h1 {
+                font-size: 21px;
+            }
+
+            .subtitle {
+                margin-bottom: 13px;
+            }
+
+            .card {
+                padding: 20px 17px 17px;
+            }
+
+            .card-p {
+                margin-bottom: 14px;
+            }
+
+            .key-box {
+                padding: 15px 8px;
+                margin-bottom: 13px;
+            }
+
+            .btn {
+                padding: 11px;
+            }
+
+            .footer {
+                margin-top: 10px;
+            }
+        }
+
+        @media (max-width: 350px) {
+
+            body {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            .card {
+                padding-left: 13px;
+                padding-right: 13px;
+            }
+
+            #finalKey {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <div id="mainContainer">
-        <div class="key-icon">
-            <img src="./assets/logo.png" alt="BLUE">
-        </div>
+    <!-- ================= SNOWFALL ================= -->
 
-        <h1>Access Unlocked</h1>
-        <p class="subtitle">Your device-locked license key is ready.</p>
+    <div class="snowfall">
+        <span class="snowflake"></span>
+        <span class="snowflake"></span>
+        <span class="snowflake"></span>
+        <span class="snowflake"></span>
+        <span class="snowflake"></span>
+        <span class="snowflake"></span>
+        <span class="snowflake"></span>
+        <span class="snowflake"></span>
+        <span class="snowflake"></span>
+        <span class="snowflake"></span>
+        <span class="snowflake"></span>
+        <span class="snowflake"></span>
+        <span class="snowflake"></span>
+        <span class="snowflake"></span>
+        <span class="snowflake"></span>
+        <span class="snowflake"></span>
+    </div>
 
-        <div class="card">
-            <h2>Generation Success!</h2>
-            <p class="card-p">This key is locked to your device. Share it, and it won't work for others.</p>
+    <div class="light one"></div>
+    <div class="light two"></div>
 
-            <div class="key-box">
-                <span id="finalKey">SECURE FETCHING...</span>
+    <div class="container">
+
+        <div id="mainContainer">
+
+            <div class="key-icon">
+                <img src="./assets/logo.png" alt="BLUE">
             </div>
 
-            <button class="btn" id="copyBtn" onclick="copyKey()">
-                COPY TO CLIPBOARD
-            </button>
+            <h1>Access Unlocked</h1>
+
+            <p class="subtitle">
+                YOUR DEVICE-LOCKED LICENSE KEY IS READY
+            </p>
+
+            <div class="card">
+
+                <h2>Generation Success!</h2>
+
+                <p class="card-p">
+                    This key is locked to your device.
+                    Share it, and it won't work for others.
+                </p>
+
+                <div class="key-box">
+                    <span id="finalKey">SECURE FETCHING...</span>
+                </div>
+
+                <button
+                    class="btn"
+                    id="copyBtn"
+                    onclick="copyKey()">
+                    COPY TO CLIPBOARD
+                </button>
+
+            </div>
+
         </div>
+
+        <div id="bypassContainer">
+
+            <div class="error-card">
+
+                <div class="error-icon">🚫</div>
+
+                <div class="error-title">
+                    Bypass Detected!
+                </div>
+
+                <p style="
+                    color:#888;
+                    font-size:13px;
+                    line-height:1.6;
+                    margin:0;
+                ">
+                    Direct access is prohibited.
+                    Please use the official link from the
+                    script to generate your key.
+                </p>
+
+                <button
+                    class="btn btn-red"
+                    onclick="location.href='steps.html'">
+                    RETURN TO STEPS
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="footer">
+            FARAZ PLAYZ YT SECURITY SYSTEM
+        </div>
+
     </div>
 
-    <div id="bypassContainer">
-        <div class="error-card">
-            <div class="error-icon">🚫</div>
-            <div class="error-title">Bypass Detected!</div>
-            <p style="color:#888; font-size: 14px; line-height: 1.5;">Direct access is prohibited. Please use the official link from the script to generate your key.</p>
-            <button class="btn btn-red" onclick="location.href='steps.html'">RETURN TO STEPS</button>
-        </div>
-    </div>
 
-    <div class="footer">FARAZ PLAYZ YT SECURITY SYSTEM</div>
-</div>
+    <!-- ================================================= -->
+    <!-- IMPORTANT: ORIGINAL LOGIC BELOW — UNCHANGED       -->
+    <!-- ================================================= -->
 
-<script>
-    async function checkSecurity() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const source = urlParams.get('source');
-        const referrer = document.referrer;
-        
-        if (source === "official" || referrer.includes("earnlinks.io") || referrer.includes("lootdest.org") || referrer.includes("steps.html")) {
-            if (source === "official") {
-                const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
-                window.history.replaceState({}, document.title, cleanUrl);
+    <script>
+        async function checkSecurity() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const source = urlParams.get('source');
+            const referrer = document.referrer;
+            
+            if (source === "official" || referrer.includes("earnlinks.io") || referrer.includes("lootdest.org") || referrer.includes("steps.html")) {
+                if (source === "official") {
+                    const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                    window.history.replaceState({}, document.title, cleanUrl);
+                }
+                document.getElementById('mainContainer').style.display = "block";
+                generateLockedKey(); 
+            } else {
+                document.getElementById('mainContainer').style.display = "none";
+                document.getElementById('bypassContainer').style.display = "block";
+                document.getElementById('finalKey').innerText = "ACCESS DENIED";
             }
-            document.getElementById('mainContainer').style.display = "block";
-            generateLockedKey(); 
-        } else {
-            document.getElementById('mainContainer').style.display = "none";
-            document.getElementById('bypassContainer').style.display = "block";
-            document.getElementById('finalKey').innerText = "ACCESS DENIED";
         }
-    }
 
-    async function generateLockedKey() {
-    try {
-        const response = await fetch('https://api.ipify.org?format=json');
-        const data = await response.json();
-        const ip = data.ip;
+        async function generateLockedKey() {
+        try {
+            const response = await fetch('https://api.ipify.org?format=json');
+            const data = await response.json();
+            const ip = data.ip;
 
-        // Aaj ki Date (Daily expiry ke liye)
-        const day = Math.floor(Date.now() / 86400000);
-        const ipSeed = parseInt(ip.replace(/\./g, '').substring(0, 6)); 
-        
-        // Seed: IP + Date + Year (Ye App se match hona chahiye)
-        let seed = ipSeed + day + 2026; 
-        
-        function rnd() { 
-            var x = Math.sin(seed++) * 10000; 
-            return Math.abs(x - Math.floor(x)); 
-        }
-        
-        const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-        let segments = [];
-        for(let i=0; i<4; i++) {
-            let s = "";
-            for(let j=0; j<4; j++) {
-                let r = Math.floor(rnd() * chars.length);
-                s += chars.charAt(r);
+            // Aaj ki Date (Daily expiry ke liye)
+            const day = Math.floor(Date.now() / 86400000);
+            const ipSeed = parseInt(ip.replace(/\./g, '').substring(0, 6)); 
+            
+            // Seed: IP + Date + Year (Ye App se match hona chahiye)
+            let seed = ipSeed + day + 2026; 
+            
+            function rnd() { 
+                var x = Math.sin(seed++) * 10000; 
+                return Math.abs(x - Math.floor(x)); 
             }
-            segments.push(s);
+            
+            const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+            let segments = [];
+            for(let i=0; i<4; i++) {
+                let s = "";
+                for(let j=0; j<4; j++) {
+                    let r = Math.floor(rnd() * chars.length);
+                    s += chars.charAt(r);
+                }
+                segments.push(s);
+            }
+
+            const finalKey = "BLUE-" + segments.join("-");
+            document.getElementById('finalKey').innerText = finalKey;
+
+        } catch (err) {
+            document.getElementById('finalKey').innerText = "CONNECT TO INTERNET";
+        }
+    }
+
+
+
+        function copyKey() {
+            const keyText = document.getElementById('finalKey').innerText;
+            if(keyText.includes("SECURE") || keyText.includes("CONNECT")) return;
+
+            navigator.clipboard.writeText(keyText).then(() => {
+                const btn = document.getElementById('copyBtn');
+                btn.innerText = "COPIED SUCCESSFULLY! ✅";
+                btn.style.background = "#00ff88";
+                setTimeout(() => { 
+                    btn.innerText = "COPY TO CLIPBOARD"; 
+                    btn.style.background = "#ffffff";
+                }, 2000);
+            });
         }
 
-        const finalKey = "BLUE-" + segments.join("-");
-        document.getElementById('finalKey').innerText = finalKey;
+        window.onload = checkSecurity;
+    </script>
 
-    } catch (err) {
-        document.getElementById('finalKey').innerText = "CONNECT TO INTERNET";
-    }
-}
-
-
-
-    function copyKey() {
-        const keyText = document.getElementById('finalKey').innerText;
-        if(keyText.includes("SECURE") || keyText.includes("CONNECT")) return;
-
-        navigator.clipboard.writeText(keyText).then(() => {
-            const btn = document.getElementById('copyBtn');
-            btn.innerText = "COPIED SUCCESSFULLY! ✅";
-            btn.style.background = "#00ff88";
-            setTimeout(() => { 
-                btn.innerText = "COPY TO CLIPBOARD"; 
-                btn.style.background = "#ffffff";
-            }, 2000);
-        });
-    }
-
-    window.onload = checkSecurity;
-</script>
 </body>
 </html>
