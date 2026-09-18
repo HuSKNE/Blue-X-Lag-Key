@@ -381,6 +381,75 @@ h1 {
 
 
 /* =========================
+   YOUTUBE + TELEGRAM
+========================= */
+
+.social-buttons {
+    display: flex;
+
+    gap: 8px;
+
+    margin-top: 8px;
+}
+
+.social-btn {
+    flex: 1;
+
+    padding: 9px 8px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    text-align: center;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: .5px;
+
+    transition: .2s ease;
+}
+
+.youtube-btn {
+    color: #ff4b4b;
+
+    background: #160707;
+
+    border: 1px solid #5c2020;
+}
+
+.youtube-btn:hover {
+    background: #220909;
+
+    box-shadow:
+        0 0 15px rgba(255,40,40,.18);
+}
+
+.telegram-btn {
+    color: #28b9ff;
+
+    background: #06131a;
+
+    border: 1px solid #15516d;
+}
+
+.telegram-btn:hover {
+    background: #071b25;
+
+    box-shadow:
+        0 0 15px rgba(0,180,255,.18);
+}
+
+.social-btn:active {
+    transform: scale(.97);
+}
+
+
+/* =========================
    MOBILE
 ========================= */
 
@@ -497,6 +566,11 @@ h1 {
         padding: 10px;
 
         font-size: 13px;
+    }
+
+    .social-btn {
+        padding: 8px;
+        font-size: 10px;
     }
 }
 
@@ -666,6 +740,34 @@ h1 {
             CONTINUE TO STEP →
 
         </button>
+
+
+        <!-- SOCIAL BUTTONS -->
+
+        <div class="social-buttons">
+
+            <a
+                class="social-btn youtube-btn"
+                href="https://www.youtube.com/@FaraZPlayz-Z"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                ▶ YOUTUBE
+
+            </a>
+
+
+            <a
+                class="social-btn telegram-btn"
+                href="https://t.me/farazplayzzyt"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                ✈ TELEGRAM
+
+            </a>
+
+        </div>
 
 
     </div>
